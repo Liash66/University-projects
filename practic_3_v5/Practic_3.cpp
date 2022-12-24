@@ -17,13 +17,12 @@ int main()
 				  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				  0, 0, 0, 0, 0, 0, 0 };
 
-	int max[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+	int max[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 	char kC[33] = { 'ё', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш',
 					'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п',
 					'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с',
 					'м', 'и', 'т', 'ь', 'б', 'ю' };
 	char maxC[8];
-	int s = 0;
 
 	while (!file.eof())
 	{
@@ -116,6 +115,7 @@ int main()
 	while (!fileCheck.eof())
 	{
 		fileCheck >> strCheck;
+		int s = 0;
 		vector<char> r;
 		for (int i = 0; i < strCheck.length(); i++)
 		{
@@ -134,20 +134,31 @@ int main()
 		{
 			for (int i = 0; i < strCheck.length(); i++)
 			{
+				bool flag = false;
 				for (int j = 0; j < 8; j++)
 				{
 					if ((strCheck[i] == maxC[j]) or (strCheck[i] == toupper(maxC[j])))
 					{
 						r.push_back(toupper(maxC[j]));
+						out << char(toupper(strCheck[i]));
+						flag = true;
 						break;
 					}
 				}
-				out << char(toupper(strCheck[i]));
+				if (flag == false)
+					out << char(tolower(strCheck[i]));
 			}
 			out << ' ' << '(' << ' ';
 			for (int i = 0; i < r.size(); i++)
 				out << r[i] << ' ';
 			out << ')' << endl;
+		}
+		else
+		{
+			for (int i = 0; i < strCheck.length() + 1; i++)
+			{
+				out << strCheck[i];
+			}
 		}
 	}
 }
