@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-set(PROJECT_NAME Project)		 
+set(PROJECT_NAME Main)		 
 project("${PROJECT_NAME}")	
 
 set(CMAKE_CXX_STANDARD 17)
@@ -13,10 +13,7 @@ include_directories("exit/SFML/include/")
 include_directories("inc/")
 link_directories("exit/SFML/lib/")
 
-add_executable("${PROJECT_NAME}" Main.cpp
-						Planet.h
-						Game.h
-						Game.cpp)
+add_executable("${PROJECT_NAME}" Main.cpp Planet.h Game.h Game.cpp)
 
 target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 						  sfml-window-s-d
