@@ -1,14 +1,14 @@
-#OS
+# OS
 Windows 11/10
 
-#For using
-Open "For users" folder and run "Project.exe"
+# For using
+Build "Development/Release" folder in CMake
 
-#For development
-Open "For developers" folder, open "CMakeLists.txt" in VS and compilate
+# For development
+Build "Development/Debug" folder in CMake
 
-#Compiler
+# Compiler
 Microsoft Visual C++
 
-#IDE
+# IDE
 Microsft Visual Studio 2022
