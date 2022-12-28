@@ -8,24 +8,22 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 add_definitions(-DSFML_STATIC)
+add_definitions(-SFML_STATIC)
 
-include_directories("exit/SFML/include/")
-include_directories("inc/")
-link_directories("exit/SFML/lib/")
+include_directories("SFML/include/")
+include_directories("include/")
+link_directories("SFML/lib/")	
 
 add_executable("${PROJECT_NAME}" Main.cpp Planet.h Game.h Game.cpp)
 
 target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 						  sfml-window-s-d
 						  sfml-system-s-d
-						  opengl32
-						  freetype
-						  winmm
-						  gdi32
-						  sfml-audio-s-d
-						  openal32
-						  flac
-						  vorbisenc
-						  vorbisfile
-						  vorbis
-						  ogg)
+						  sfml-audio-s-d)
+
+target_link_libraries("${PROJECT_NAME}" sfml-graphics-s
+						  sfml-window-s
+						  sfml-system-s
+						  sfml-audio-s)
+
+target_link_libraries("${PROJECT_NAME}" opengl32 freetype gdi32 openal32 flac winmm vorbisenc vorbisfile vorbis ogg)
