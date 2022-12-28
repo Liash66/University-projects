@@ -42,16 +42,12 @@ namespace mt
 			m_shape->setPosition(x, y);
 		}
 
-		bool Setup()
+		void Setup()
 		{
 			m_texture = new sf::Texture;
 			if (!m_texture->loadFromFile(m_image))
-			{
 				std::cout << "Can't load texture";
-				return false;
-			}
 			m_shape->setTexture(m_texture);
-			return true;
 		}
 
 		sf::CircleShape* Get() { return m_shape; }
