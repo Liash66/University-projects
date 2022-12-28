@@ -40,7 +40,7 @@ namespace mt
 			std::cout << "Can't load background";
 		sf::Sprite background;
 		background.setTexture(texture);
-		background.setScale(0.31, 0.31);
+		background.setScale(0.33, 0.33);
 
 		for (int i = 0; i < planets.size(); i++)
 			planets[i]->Setup();
