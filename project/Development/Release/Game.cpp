@@ -31,10 +31,16 @@ namespace mt
 	void Game::Run()
 	{
 		std::vector<mt::Planet*> planets;
-		planets.emplace_back(new mt::Planet({ 400, 300, 0 }, 600, "assets/background.jpg"));
 		planets.emplace_back(new mt::Planet({ 400, 300, 0 }, 200, "assets/star.png"));
 		planets.emplace_back(new mt::Planet({ 0, 0, 200 }, 20, "assets/planet_1.png"));
 		planets.emplace_back(new mt::Planet({ 0, 0, 300 }, 35, "assets/planet_2.png"));
+
+		sf::Texture texture;
+		if (!texture.loadFromFile("assets/background.jpg"))
+			std::cout << "Can't load background";
+		sf::Sprite background;
+		background.setTexture(texture);
+		background.setScale(0.31, 0.31);
 
 		for (int i = 0; i < planets.size(); i++)
 			planets[i]->Setup();
@@ -54,11 +60,11 @@ namespace mt
 			sf::Time dt = m_timer.restart();
 			t += dt.asSeconds();
 
-			planets[2]->Move(t / 2);
-			planets[3]->Move(t / 3);
+			planets[1]->Move(t / 2);
+			planets[2]->Move(t / 3);
 
 			m_window->clear();
-			//m_window->draw(*font->Get());
+			m_window->draw(background);
 			for (int i = 0; i < planets.size(); i++)
 				m_window->draw(*planets[i]->Get());
 			m_window->display();
